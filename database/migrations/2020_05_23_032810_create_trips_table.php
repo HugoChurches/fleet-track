@@ -31,8 +31,7 @@ class CreateTripsTable extends Migration
             $table->timestamps();
         });
         Schema::table('drivers', function (Blueprint $table) {
-            $table->foreignId('trip_id')->constrained();
-
+            $table->foreignId('trip_id')->nullable()->constrained();
         });
     }
 

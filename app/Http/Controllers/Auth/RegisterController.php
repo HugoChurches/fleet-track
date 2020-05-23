@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Driver;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -42,6 +44,30 @@ class RegisterController extends Controller
     }
 
     /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+
+        //When finished registering redirect the user to the page
+        return redirect($this->redirectPath());
+    }
+
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -52,7 +78,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string'],
+            'phone' => ['required', 'string'],
+            'license_id' => ['required', 'string'],
+            'license_id_exp' => ['required', 'string', 'date'],
+            'transport_certifications' => ['nullable', 'string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
     }
 
@@ -62,12 +93,23 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+    //BACKEND - FRONTEND
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password'])
         ]);
+
+        $driver = Driver::create([
+            'address' => $data['address'],
+            'phone' => $data['phone'],
+            'license_number' => $data['license_id'],
+            'license_expires_on' => $data['license_id_exp'],
+            'certifications' => $data['transport_certifications']
+        ]);
+
+        return $user;
     }
 }

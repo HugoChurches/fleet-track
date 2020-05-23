@@ -25,13 +25,13 @@
         <!-- Here are the contents of the box -->
         <form method="POST" class="max-w-xs flex flex-col items-center space-y-6" action="{{ route('login') }}">
             @csrf
-            <div class="flex flex-col items-center font-semibold text-blue-200 space-y-2">
-                <p class="w-full">E-mail</p>
+            <div class="flex flex-col items-center font-semibold space-y-2">
+                <p class="w-full text-blue-200">E-mail</p>
                 <input class="w-full rounded" name="email" id="email" placeholder="E-mail" type="text">
             </div>
 
-            <div class="flex flex-col items-center font-semibold text-blue-200 space-y-2">
-                <p class="w-full">Password</p>
+            <div class="flex flex-col items-center font-semibold space-y-2">
+                <p class="w-full text-blue-200">Password</p>
                 <input class="w-full rounded" name="password" id="password" placeholder="Your password" type="password">
             </div>
 
@@ -41,9 +41,9 @@
         </form>
 
         <div class="flex justify-center">
-            <button class="text-blue-200 hover:underline rounded border-blue-700 border-transparent border-b-3 hover:border-blue-400 py-2 px-2 ">
+            <a href="/register" class="text-blue-200 hover:underline rounded border-blue-700 border-transparent border-b-3 hover:border-blue-400 py-2 px-2 ">
                 Create an account
-            </button>
+            </a>
         </div>
     </div>
     <script src="script.js"></script>
