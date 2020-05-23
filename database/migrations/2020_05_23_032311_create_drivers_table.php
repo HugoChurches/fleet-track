@@ -23,7 +23,7 @@ class CreateDriversTable extends Migration
             $table->timestamps();
         });
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('driver_id')->constrained();
+            $table->foreignId('driver_id')->nullable()->constrained();
         });
     }
 
