@@ -25,14 +25,15 @@
         <!-- Here are the contents of the box -->
         <form method="POST" class="max-w-xs flex flex-col items-center space-y-6" action="{{ route('login') }}">
             @csrf
-            <div class="flex flex-col items-center font-semibold space-y-2">
-                <p class="w-full text-blue-200">E-mail</p>
-                <input class="w-full rounded" name="email" id="email" placeholder="E-mail" type="text">
+            <div class="flex flex-col items-center font-semibold">
+                <label class="w-full text-blue-200">E-mail</label>
+                <input class="w-full rounded border px-2" name="email" id="email" placeholder="E-mail" type="email">
             </div>
 
-            <div class="flex flex-col items-center font-semibold space-y-2">
-                <p class="w-full text-blue-200">Password</p>
-                <input class="w-full rounded" name="password" id="password" placeholder="Your password" type="password">
+
+            <div class="flex flex-col items-center font-semibold">
+                <label class="w-full text-blue-200">Password</label>
+                <input class="w-full rounded border px-2" name="password" id="password" placeholder="Your Password" type="password">
             </div>
 
             <button class="w-full text-white rounded bg-blue-600 font-semibold border-blue-700 border-b-3 hover:bg-blue-400 hover:border-blue-400 py-2 px-2 ">
