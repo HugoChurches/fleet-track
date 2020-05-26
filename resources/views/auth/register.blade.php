@@ -35,7 +35,7 @@
             <div class="w-full flex flex-col items-center font-semibold space-y-2">
                 <p class="text-blue-200 w-full">E-mail</p>
                 <input class="w-full rounded" name="email" id="email" value="{{ old('email') }}" placeholder="Your e-mail" type="email">
-                @error('name')
+                @error('email')
                 <p class="text-red-400 font-semibold">{{ $message }}</p>
                 @enderror
 

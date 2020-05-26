@@ -110,6 +110,10 @@ class RegisterController extends Controller
             'certifications' => $data['transport_certifications']
         ]);
 
+        $user->driver()->associate($driver);
+
+        $user->save();
+
         return $user;
     }
 }
