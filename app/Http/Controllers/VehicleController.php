@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreVehicle;
 use App\Vehicle;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        $data['vehicles'] = Vehicle::all();
+
+        return view('vehicles', $data);
     }
 
     /**
@@ -24,7 +27,7 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        //
+        return view('create-vehicle');
     }
 
     /**
@@ -33,9 +36,11 @@ class VehicleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreVehicle $request)
     {
-        //
+        $vehicle = Vehicle::create($request->only('make', 'model', 'color', 'engine_number', 'location', 'year', 'mileage'));
+
+        return 'created';
     }
 
     /**
@@ -46,7 +51,8 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        //
+        $data['vehicle'] = $vehicle;
+        return view('show-vehicle', $data);
     }
 
     /**

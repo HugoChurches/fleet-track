@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Driver;
+use App\Http\Requests\StoreAdministrator;
+use App\User;
 use Illuminate\Http\Request;
 
-class DriverController extends Controller
+class AdministratorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,11 @@ class DriverController extends Controller
      */
     public function index()
     {
-        //Return the index of drivers
-        return view('drivers');
+        //Create controller using php artisan make:controller AdministratorController --resource (for CRUD endpoints)
+        //return view('admins');
+        //Fetch data from server with all user accounts
+        $data['admins'] = User::all();
+        return view('admins', $data);
     }
 
     /**
@@ -25,7 +29,8 @@ class DriverController extends Controller
      */
     public function create()
     {
-        //
+        //Create controller for admin creation
+        return view('create-admin');
     }
 
     /**
@@ -34,29 +39,34 @@ class DriverController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAdministrator $request)
     {
-        //
+        //return 'ok';\
+        $administrator = new User($request->only('name', 'email'));
+        $administrator->password = bcrypt($request->input('password'));
+        $administrator->save();
+        return 'created new administrator';
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Driver  $driver
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Driver $driver)
+    public function show(User $administrator)
     {
-        //
+        $data['administrator'] = $administrator;
+        return view('show-admin', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Driver  $driver
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Driver $driver)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +75,10 @@ class DriverController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Driver  $driver
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Driver $driver)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +86,10 @@ class DriverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Driver  $driver
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Driver $driver)
+    public function destroy($id)
     {
         //
     }

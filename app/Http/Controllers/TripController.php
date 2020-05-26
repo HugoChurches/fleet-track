@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Http\Requests\StoreTrip;
 use App\Trip;
+use App\Vehicle;
 use Illuminate\Http\Request;
 
 class TripController extends Controller
@@ -14,28 +17,33 @@ class TripController extends Controller
      */
     public function index()
     {
-        //
+        $data['trips'] = Trip::all();
+        return view('trips', $data);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illu`minate\Http\Response
      */
     public function create()
     {
-        //
+        $data['vehicles'] = Vehicle::all();
+        //Send the vehicles
+        return view('create-trip', $data);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created `resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTrip $request)
     {
-        //
+        $trip = new Trip($request->only('destination', 'duration_hours', 'due_date', 'vehicle_id'));
+        Auth::user()->driver->trips()->save($trip);
+        return 'created new trip';
     }
 
     /**
@@ -47,6 +55,8 @@ class TripController extends Controller
     public function show(Trip $trip)
     {
         //
+        $data['trip'] = $trip;
+        return view('show-trip', $data);
     }
 
     /**

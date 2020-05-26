@@ -27,10 +27,10 @@
 
 <body>
     <div class="h-full w-64 fixed z-1 top-0 left-0 bg-gray-700 overflow-x-hidden pt-6">
-        <a class="px-6 py-4 text-gray-400 hover:text-white text-2xl block" href="#about">Vehicles</a>
-        <a class="px-6 py-4 text-gray-400 hover:text-white text-2xl block" href="#services">Drivers</a>
-        <a class="px-6 py-4 text-gray-400 hover:text-white text-2xl block" href="#clients">Trips</a>
-        <a class="px-6 py-4 text-gray-400 hover:text-white text-2xl block" href="#contact">Admins</a>
+        <a class="px-6 py-4 text-gray-400 hover:text-white text-2xl block" href="{{route('vehicles.index')}}">Vehicles</a>
+        <a class="px-6 py-4 text-gray-400 hover:text-white text-2xl block" href="{{route('drivers.index')}}">Drivers</a>
+        <a class="px-6 py-4 text-gray-400 hover:text-white text-2xl block" href="{{route('trips.index')}}">Trips</a>
+        <a class="px-6 py-4 text-gray-400 hover:text-white text-2xl block" href="{{route('administrators.index')}}">Admins</a>
         <form class="w-full" id="logout-form" action="{{ route('logout') }}" method="POST">
             @csrf
             <button class="text-left w-full px-6 py-4 text-gray-400 hover:text-white text-2xl block border-t border-gray-600" href="#contact">Logout</button>
