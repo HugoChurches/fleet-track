@@ -15,7 +15,7 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('driver_id')->constrained();
+            $table->foreignId('driver_id')->nullable()->constrained();
             $table->string('make');
             $table->string('model');
             $table->string('color');

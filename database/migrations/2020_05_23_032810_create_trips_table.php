@@ -15,19 +15,19 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('driver_id')->constrained();
             $table->foreignId('vehicle_id')->constrained();
             $table->unsignedDecimal('duration_hours');
             $table->string('destination');
-            $table->dateTime('started_on');
-            $table->dateTime('ended_on');
+            $table->dateTime('started_on')->nullable(); //These not
+            $table->dateTime('ended_on')->nullable(); //
             $table->dateTime('due_date');
-            $table->mediumText('trip_notes');
-            $table->unsignedDecimal('pocket_expenses');
-            $table->unsignedDecimal('late_fee');
-            $table->unsignedDecimal('bonus');
-            $table->unsignedDecimal('pay_rate');
+            $table->mediumText('trip_notes')->nullable(); //
+            $table->unsignedDecimal('pocket_expenses')->nullable(); //
+            $table->unsignedDecimal('late_fee')->nullable(); //
+            $table->unsignedDecimal('bonus')->nullable(); // 
+            $table->unsignedDecimal('pay_rate')->nullable(); //
             $table->timestamps();
         });
         Schema::table('drivers', function (Blueprint $table) {
