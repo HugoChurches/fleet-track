@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVehicle;
+use App\Http\Requests\UpdateVehicle;
 use App\Vehicle;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,6 @@ class VehicleController extends Controller
     public function index()
     {
         $data['vehicles'] = Vehicle::all();
-
         return view('vehicles', $data);
     }
 
@@ -38,9 +38,9 @@ class VehicleController extends Controller
      */
     public function store(StoreVehicle $request)
     {
-        $vehicle = Vehicle::create($request->only('make', 'model', 'color', 'engine_number', 'location', 'year', 'mileage'));
+        $vehicle = Vehicle::create($request->only('make', 'model', 'color', 'engine_number', 'location', 'year', 'mileage', 'status', 'next_service'));
 
-        return 'created';
+        return redirect()->route("vehicles.show", ["vehicle" => $vehicle]);
     }
 
     /**
@@ -55,6 +55,19 @@ class VehicleController extends Controller
         return view('show-vehicle', $data);
     }
 
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Vehicle  $vehicle
+     * @return \Illuminate\Http\Response
+     */
+    public static function delshow(Vehicle $vehicle)
+    {
+        $data['vehicle'] = $vehicle;
+        return view('confirm-vehicle', $data);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -63,7 +76,8 @@ class VehicleController extends Controller
      */
     public function edit(Vehicle $vehicle)
     {
-        //
+        $data['vehicle'] = $vehicle;
+        return view('update-vehicle', $data);
     }
 
     /**
@@ -73,9 +87,12 @@ class VehicleController extends Controller
      * @param  \App\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vehicle $vehicle)
+    public function update(UpdateVehicle $request, Vehicle $vehicle)
     {
-        //
+        //Update the requested fields
+        $vehicle->update($request->only('make', 'model', 'color', 'engine_number', 'location', 'year', 'mileage', 'status', 'next_service'));
+        //Show the newly edited vehicles
+        return redirect()->route("vehicles.show", ["vehicle" => $vehicle]);
     }
 
     /**
@@ -86,6 +103,7 @@ class VehicleController extends Controller
      */
     public function destroy(Vehicle $vehicle)
     {
-        //
+        $vehicle->delete($vehicle);
+        return redirect()->route("vehicles.show", ["vehicle" => $vehicle]);
     }
 }

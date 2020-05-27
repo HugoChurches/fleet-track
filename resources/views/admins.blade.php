@@ -23,7 +23,7 @@
             <td class="px-4 py-2">{{$admin->email}}</td>
             <td class="px-4 py-2">
                 <a href="{{route('administrators.show', ['administrator' => $admin])}}" class="bg-gray-200 text-cool-gray-700 rounded px-2">View</a>
-                <button class="bg-blue-200 text-blue-800 rounded px-2">Edit</button>
+                <a href="{{route('administrators.edit', ['administrator' => $admin])}}" class="bg-blue-200 text-blue-800 rounded px-2">Edit</a>
             </td>
         </tr>
         @endforeach

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreVehicle extends FormRequest
+class UpdateVehicle extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,7 +33,6 @@ class StoreVehicle extends FormRequest
             'year' => 'required|numeric|min:1950',
             'mileage' => 'required|numeric|min:0',
             'status' => 'required',
-            'next_service' => 'required|numeric|min:0',
         ];
     }
 }

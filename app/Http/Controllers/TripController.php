@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Http\Requests\StoreTrip;
+use App\Http\Requests\UpdateTrip;
+use App\Http\Requests\UpdateVehicle;
 use App\Trip;
 use App\Vehicle;
 use Illuminate\Http\Request;
@@ -43,7 +45,9 @@ class TripController extends Controller
     {
         $trip = new Trip($request->only('destination', 'duration_hours', 'due_date', 'vehicle_id'));
         Auth::user()->driver->trips()->save($trip);
-        return 'created new trip';
+        //return 'created new trip';
+        $data['trip'] = $trip;
+        return view('show-trip', $data);
     }
 
     /**
@@ -67,7 +71,10 @@ class TripController extends Controller
      */
     public function edit(Trip $trip)
     {
-        //
+        $data['trip'] = $trip;
+        $data2['vehicles'] = Vehicle::all();
+
+        return view('update-trip', $data, $data2);
     }
 
     /**
@@ -77,9 +84,10 @@ class TripController extends Controller
      * @param  \App\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trip $trip)
+    public function update(UpdateTrip $request, Trip $trip)
     {
-        //
+        $trip->update($request->only('duration_hours', 'destination', 'due_date', 'vehicle_id'));
+        return redirect()->route("trips.show", ["trip" => $trip]);
     }
 
     /**
@@ -90,6 +98,7 @@ class TripController extends Controller
      */
     public function destroy(Trip $trip)
     {
-        //
+        //Remove the specified resource from storage
+
     }
 }

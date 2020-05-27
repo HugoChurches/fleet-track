@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAdministrator;
+use App\Http\Requests\UpdateAdministrator;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -45,7 +46,8 @@ class AdministratorController extends Controller
         $administrator = new User($request->only('name', 'email'));
         $administrator->password = bcrypt($request->input('password'));
         $administrator->save();
-        return 'created new administrator';
+        //After saving everything reroute to the newly added administrator
+        return redirect()->route("administrators.show", ["administrator" => $administrator]);
     }
 
     /**
@@ -66,9 +68,10 @@ class AdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $administrator)
     {
-        //
+        $data['administrator'] = $administrator;
+        return view('update-admin', $data);
     }
 
     /**
@@ -78,9 +81,12 @@ class AdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAdministrator $request, User $administrator)
     {
-        //
+        //Update the requested fields
+        $administrator->update($request->only('name', 'email', 'password'));
+        //Show the newly edited administrator
+        return redirect()->route("administrators.show", ["administrator" => $administrator]);
     }
 
     /**

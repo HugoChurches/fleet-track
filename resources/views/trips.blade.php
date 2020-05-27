@@ -15,6 +15,7 @@
             <th class="px-4 py-2">Vehicle</th>
             <th class="px-4 py-2">Destination</th>
             <th class="px-4 py-2">Status</th>
+            <th class="px-4 py-2">Duration</th>
             <th class="px-4 py-2"></th>
         </tr>
     </thead>
@@ -26,9 +27,10 @@
             <td class="px-4 py-2">{{$trip->vehicle->make}}</td>
             <td class="px-4 py-2">{{$trip->destination}}</td>
             <td class="px-4 py-2">{{$trip->due_date}}</td>
+            <td class="px-4 py-2">Hours {{$trip->duration_hours}}</td>
             <td class="px-4 py-2">
                 <a href="{{route('trips.show', ['trip' => $trip])}}" class="bg-gray-200 text-cool-gray-700 rounded px-2">View</a>
-                <button class="bg-blue-200 text-blue-800 rounded px-2">Edit</button>
+                <a href="{{route('trips.edit', ['trip' => $trip])}}" class="bg-blue-200 text-blue-800 rounded px-2">Edit</a>
             </td>
         </tr>
         @endforeach
