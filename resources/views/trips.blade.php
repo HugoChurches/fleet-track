@@ -19,7 +19,7 @@
         </tr>
     </thead>
 
-    <tbody>`
+    <tbody>
         @foreach($trips as $trip)
         <tr class="border-t border-b">
             <td class="px-4 py-2">{{$trip->driver->user->name}}</td>
@@ -32,6 +32,7 @@
             <td class="px-4 py-2">
                 <a href="{{route('trips.show', ['trip' => $trip])}}" class="bg-gray-200 text-cool-gray-700 rounded px-2">View</a>
                 <a href="{{route('trips.edit', ['trip' => $trip])}}" class="bg-blue-200 text-blue-800 rounded px-2">Edit</a>
+                @if($trip->driver->user->driver_id == null)
                 @if($trip->status() == 'Pending authorization')
                 <form action="{{route('trips.authorize', ['trip' => $trip])}}" method="POST">
                     @csrf
@@ -47,6 +48,8 @@
                     <button class="bg-red-200 text-red-800 rounded px-2">Deny</button>
                 </form>
                 @endif
+                @endif
+
 
                 @if($trip->status() == 'Scheduled')
                 <form action="{{route('trips.start', ['trip' => $trip])}}" method="POST">

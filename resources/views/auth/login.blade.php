@@ -9,13 +9,11 @@
 </head>
 
 <body>
-
-
     <div class="w-full  h-screen bg-gray-800 flex flex-col items-center justify-center space-y-6">
 
         <div class="flex justify-end absolute top-0 right-0">
-            <a class="font-semibold text-white m-2" href="about.html">About us</a>
-            <a class="font-semibold text-white m-2" href="contact.html">Contact</a>
+            <a class="font-semibold text-white m-2" href="{{ route('about.about') }}">About us</a>
+            <a class="font-semibold text-white m-2" href="{{ route('contact.contact') }}">Contact</a>
         </div>
 
 
@@ -47,7 +45,6 @@
             </a>
         </div>
     </div>
-    <script src="script.js"></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </body>
 

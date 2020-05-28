@@ -16,7 +16,7 @@
         @foreach($drivers as $driver)
         <tr class="border-t border-b">
             <td class="px-4 py-2">{{$driver->user->name}}</td>
-            <td class="px-4 py-2">{{$driver->user->email}}</td>
+            <td class="px-4 py-2">{{$driver->user}}</td>
             <td class="px-4 py-2">
                 <a href="{{route('drivers.show', ['driver' => $driver])}}" class="bg-gray-200 text-cool-gray-700 rounded px-2">View</a>
             </td>
