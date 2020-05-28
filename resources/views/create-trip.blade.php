@@ -37,8 +37,11 @@
         <select name="vehicle_id" class="w-full rounded border px-2">
             <option value="" selected disabled>Please select a vehicle</option>
             @foreach($vehicles as $vehicle)
+            @if($vehicle->status() == 'Available')
             <option value="{{$vehicle->id}}">{{$vehicle->model}} - {{$vehicle->engine_number}}</option>
+            @endif
             @endforeach
+
         </select>
         @error('vehicle_id')
         <p class="text-red-400 font-semibold">{{ $message }}</p>

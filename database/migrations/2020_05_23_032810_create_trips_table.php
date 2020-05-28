@@ -20,9 +20,10 @@ class CreateTripsTable extends Migration
             $table->foreignId('vehicle_id')->constrained();
             $table->unsignedDecimal('duration_hours');
             $table->string('destination');
-            $table->dateTime('started_on')->nullable(); //These are yet to be implemented
-            $table->dateTime('ended_on')->nullable(); //
-            $table->dateTime('due_date');
+            //Nullable / Can be left as empty
+            $table->date('started_on')->nullable(); //These are yet to be implemented
+            $table->date('ended_on')->nullable(); //
+            $table->date('due_date');
             $table->mediumText('trip_notes')->nullable(); //
             $table->unsignedDecimal('pocket_expenses')->nullable(); //
             $table->unsignedDecimal('late_fee')->nullable(); //

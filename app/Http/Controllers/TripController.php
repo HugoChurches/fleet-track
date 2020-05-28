@@ -86,7 +86,48 @@ class TripController extends Controller
      */
     public function update(UpdateTrip $request, Trip $trip)
     {
-        $trip->update($request->only('duration_hours', 'destination', 'due_date', 'vehicle_id'));
+        $trip->update($request->only('duration_hours', 'destination', 'due_date', 'trip_notes', 'pocket_expenses', 'late_fee', 'bonus', 'pay_rate'));
+        return redirect()->route("trips.show", ["trip" => $trip]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Trip  $trip
+     * @return \Illuminate\Http\Response
+     */
+    public function start(Trip $trip)
+    {
+        $trip->started_on = now();
+        $trip->save();
+        return redirect()->route("trips.show", ["trip" => $trip]);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Trip  $trip
+     * @return \Illuminate\Http\Response
+     */
+    public function authorizeTrip(Trip $trip)
+    {
+        $trip->user_id = Auth::user()->id;
+        $trip->save();
+        return redirect()->route("trips.show", ["trip" => $trip]);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Trip  $trip
+     * @return \Illuminate\Http\Response
+     */
+    public function end(Trip $trip)
+    {
+        $trip->ended_on = now();
+        $trip->save();
         return redirect()->route("trips.show", ["trip" => $trip]);
     }
 
@@ -98,7 +139,7 @@ class TripController extends Controller
      */
     public function destroy(Trip $trip)
     {
-        //Remove the specified resource from storage
-
+        $trip->delete();
+        return redirect()->route('trips.index');
     }
 }

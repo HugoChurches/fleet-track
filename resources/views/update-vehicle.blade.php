@@ -69,26 +69,11 @@
 
     <div class="flex flex-col font-semibold">
         <label class="w-full text-gray-700">Next service at</label>
-        <input class="w-full rounded border px-2" name="next_service" id="next_service" placeholder="Mileage" type="number" step="any" value="{{ old('next_service', $vehicle->next_service) }}">
+        <input class="w-full rounded border px-2" name="next_service" id="next_service" placeholder="Mileage" type="date" value="{{ old('next_service', $vehicle->next_service) }}">
         @error('mileage')
         <p class="text-red-400 font-semibold ">{{ $message }}</p>
         @enderror
     </div>
-
-
-    <div class="flex flex-col font-semibold">
-        <label class="w-full text-gray-700">Status</label>
-        <select name="status" required class="w-full rounded border px-2">
-            <option value="" selected disabled>Please select an option</option>
-            <option value="Available">Available</option>
-            <option value="Out of service">Out of service</option>
-            <option value="In use">In use</option>
-            @error('status')
-            <p class="text-red-400 font-semibold">{{ $message }}</p>
-            @enderror
-        </select>
-    </div>
-
 
 
     <div class="flex justify-end space-x-2">

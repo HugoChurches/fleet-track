@@ -33,12 +33,12 @@
                 <p>Next service at: {{$vehicle->next_service}}</p>
             </td>
             <td class="px-4 py-2">{{$vehicle->location}}</td>
-            <td class="px-4 py-2">{{$vehicle->status}}</td>
+            <td class="px-4 py-2">{{$vehicle->status()}}</td>
 
             <td class="px-4 py-2">
                 <a href="{{route('vehicles.show', ['vehicle' => $vehicle])}}" class="bg-gray-200 text-cool-gray-700 rounded px-2">View</a>
                 <a href="{{route('vehicles.edit', ['vehicle' => $vehicle])}}" class="bg-blue-200 text-blue-800 rounded px-2">Edit</a>
-                <a href="{{route('vehicles.delshow', ['vehicle' => $vehicle])}}" class="bg-red-200 text-red-800 rounded px-2">Remove</button>
+                <a href="{{route('vehicles.delete', ['vehicle' => $vehicle])}}" class="bg-red-200 text-red-800 rounded px-2">Remove</button>
             </td>
         </tr>
         @endforeach

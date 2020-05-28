@@ -14,8 +14,9 @@ class DriverController extends Controller
      */
     public function index()
     {
+        $data['drivers'] = Driver::all();
         //Return the index of drivers
-        return view('drivers');
+        return view('drivers', $data);
     }
 
     /**
@@ -48,6 +49,8 @@ class DriverController extends Controller
     public function show(Driver $driver)
     {
         //
+        $data['driver'] = $driver;
+        return view('show-driver', $data);
     }
 
     /**

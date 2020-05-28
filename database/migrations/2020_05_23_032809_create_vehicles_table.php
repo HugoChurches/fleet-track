@@ -23,8 +23,7 @@ class CreateVehiclesTable extends Migration
             $table->string('location');
             $table->integer('year');
             $table->unsignedDecimal('mileage');
-            $table->string('status');
-            $table->unsignedDecimal('next_service');
+            $table->date('next_service');
             $table->timestamps();
         });
     }

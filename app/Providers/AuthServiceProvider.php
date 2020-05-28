@@ -16,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
         // 'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
+
     /**
      * Register any authentication / authorization services.
      *
@@ -24,6 +25,16 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        Gate::define('driver-access', function ($user) {
+
+            return $user->driver_id != null;
+        });
+
+        Gate::define('admin-access', function ($user) {
+
+            return $user->driver_id == null;
+        });
+
 
         //
     }

@@ -24,72 +24,72 @@
         <form method="POST" class="max-w-xs flex flex-col items-center space-y-6" action="{{ route('register') }}">
             @csrf
 
-            <div class="w-full flex flex-col items-center font-semibold space-y-2">
+            <div class="w-full flex flex-col items-center font-semibold">
                 <p class="text-blue-200 w-full">Name</p>
-                <input class="w-full rounded" name="name" id="name" value="{{ old('name') }}" placeholder="Your name" type="text">
+                <input class="w-full rounded border px-2" name="name" id="name" value="{{ old('name') }}" placeholder="Your name" type="text">
                 @error('name')
                 <p class="text-red-400 font-semibold">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="w-full flex flex-col items-center font-semibold space-y-2">
+            <div class="w-full flex flex-col items-center font-semibold">
                 <p class="text-blue-200 w-full">E-mail</p>
-                <input class="w-full rounded" name="email" id="email" value="{{ old('email') }}" placeholder="Your e-mail" type="email">
+                <input class="w-full rounded border px-2" name="email" id="email" value="{{ old('email') }}" placeholder="Your e-mail" type="email">
                 @error('email')
                 <p class="text-red-400 font-semibold">{{ $message }}</p>
                 @enderror
 
             </div>
 
-            <div class="w-full flex flex-col items-center font-semibold space-y-2">
+            <div class="w-full flex flex-col items-center font-semibold">
                 <p class="text-blue-200 w-full">Address</p>
-                <input class="w-full rounded" name="address" id="address" value="{{ old('address') }}" placeholder="Address" type="text">
+                <input class="w-full rounded border px-2" name="address" id="address" value="{{ old('address') }}" placeholder="Address" type="text">
                 @error('address')
                 <p class="text-red-400 font-semibold">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="w-full flex flex-col items-center font-semibold space-y-2">
+            <div class="w-full flex flex-col items-center font-semibold">
                 <p class="text-blue-200 w-full">Phone Number</p>
-                <input class="w-full rounded" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Phone Number" type="text">
+                <input class="w-full rounded border px-2" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Phone Number" type="text">
                 @error('phone')
                 <p class="text-red-400 font-semibold">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="w-full flex flex-col items-center font-semibold space-y-2">
+            <div class="w-full flex flex-col items-center font-semibold">
                 <p class="text-blue-200 w-full">Driver's license ID</p>
-                <input class="w-full rounded" name="license_id" id="license_id" value="{{ old('license_id') }}" placeholder="Driver's license ID" type="text">
+                <input class="w-full rounded border px-2" name="license_id" id="license_id" value="{{ old('license_id') }}" placeholder="Driver's license ID" type="text">
                 @error('license_id')
                 <p class="text-red-400 font-semibold">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="w-full flex flex-col items-center font-semibold space-y-2">
+            <div class="w-full flex flex-col items-center font-semibold">
                 <p class="text-blue-200 w-full">Driver's license ID's expiry date</p>
-                <input class="w-full rounded" name="license_id_exp" id="license_id_exp" value="{{ old('license_id_exp') }}" placeholder="Driver's license ID's expiry date" type="date">
+                <input class="w-full rounded border px-2" name="license_id_exp" id="license_id_exp" value="{{ old('license_id_exp') }}" placeholder="Driver's license ID's expiry date" type="date">
                 @error('license_id_exp')
                 <p class="text-red-400 font-semibold">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="w-full flex flex-col items-center font-semibold space-y-2">
+            <div class="w-full flex flex-col items-center font-semibold">
                 <p class="text-blue-200 w-full">Transport certifications</p>
-                <textarea class="w-full rounded" name="transport_certifications" id="transport_certifications" placeholder="Transport certifications">{{ old('transport_certifications') }}</textarea>
+                <textarea class="w-full rounded border px-2" name="transport_certifications" id="transport_certifications" placeholder="Transport certifications">{{ old('transport_certifications') }}</textarea>
             </div>
 
 
-            <div class="w-full flex flex-col items-center font-semibold space-y-2">
+            <div class="w-full flex flex-col items-center font-semibold">
                 <p class="text-blue-200 w-full">Password</p>
-                <input class="w-full rounded" name="password" id="password" placeholder="Your password" type="password">
+                <input class="w-full rounded border px-2" name="password" id="password" placeholder="Your password" type="password">
                 @error('password')
                 <p class="text-red-400 font-semibold">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="w-full flex flex-col items-center font-semibold space-y-2">
+            <div class="w-full flex flex-col items-center font-semibold">
                 <p class="text-blue-200 w-full"> Confirm Password</p>
-                <input class="w-full rounded" name="password_confirmation" id="cpassword" placeholder="Confirm password" type="password">
+                <input class="w-full rounded border px-2" name="password_confirmation" id="cpassword" placeholder="Confirm password" type="password">
                 @error('password_confirmation')
                 <p class="text-red-400 font-semibold">{{ $message }}</p>
                 @enderror

@@ -51,14 +51,9 @@
             <input disabled class="w-full rounded border px-2" id="next_service" value="{{ $vehicle->next_service }}">
         </div>
 
-        <div class="flex flex-col font-semibold">
-            <label class="w-full text-gray-700">Status</label>
-            <input disabled class="w-full rounded border px-2" id="status" value="{{ $vehicle->status }}">
-        </div>
-
-        <div class="flex justify-left space-x-4 pt-2">
-            <a href="{{route('vehicles.index')}}" class="bg-gray-700 text-white rounded px-4 py-2">Cancel</a>
-            <button href="{{route('vehicles.destroy', ['vehicle' => $vehicle])}}" class="bg-gray-400 text-white rounded px-4 py-2">Confirm</button>
+        <div class="flex justify-end space-x-4 pt-2">
+            <a href="{{route('vehicles.index')}}" class="bg-gray-300 text-gray-700 rounded px-4 py-2">Cancel</a>
+            <button href="{{route('vehicles.destroy', ['vehicle' => $vehicle])}}" class="bg-red-200 text-red-800 rounded px-4 py-2">Confirm</button>
         </div>
     </div>
 </form>

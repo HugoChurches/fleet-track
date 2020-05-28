@@ -32,7 +32,7 @@ class UpdateVehicle extends FormRequest
             'location' => 'required',
             'year' => 'required|numeric|min:1950',
             'mileage' => 'required|numeric|min:0',
-            'status' => 'required',
+            'next_service' => 'required|date|after_or_equal:today',
         ];
     }
 }

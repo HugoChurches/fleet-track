@@ -29,6 +29,11 @@ class UpdateTrip extends FormRequest
             'duration_hours' => 'required|numeric',
             'destination' => 'required|string',
             'due_date' => 'required',
+            'trip_notes' => 'nullable',
+            'pocket_expenses' => 'nullable|numeric|min:0',
+            'late_fee' => 'required|numeric|min:0',
+            'bonus' => 'nullable|numeric|min:0',
+            'pay_rate' => 'nullable|numeric|min:0',
         ];
     }
 }

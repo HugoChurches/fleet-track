@@ -18,7 +18,7 @@ class CreateDriversTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('license_number');
-            $table->dateTime('license_expires_on');
+            $table->date('license_expires_on');
             $table->mediumText('certifications')->nullable();
             $table->timestamps();
         });
