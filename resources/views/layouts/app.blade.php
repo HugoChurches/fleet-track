@@ -55,6 +55,22 @@
         @yield('content')
     </div>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    @if(Session::has('success'))
+    <script type="text/javascript">
+        swal({
+            title: 'Success!',
+            text: "{{Session::get('success')}}",
+            timer: 5000,
+            icon: 'success'
+        }).then((value) => {
+            //location.reload();
+        }).catch(swal.noop);
+    </script>
+    @endif
+
 </body>
 
 </html>

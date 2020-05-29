@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        request()->session()->flash('success', 'Task was successful!');
+
         return view('home');
     }
 }
