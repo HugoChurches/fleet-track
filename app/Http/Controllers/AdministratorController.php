@@ -86,6 +86,8 @@ class AdministratorController extends Controller
     {
         //Update the requested fields
         $administrator->update($request->only('name', 'email', 'password'));
+        $administrator->password = bcrypt($request->input('password'));
+        $administrator->save();
         //Show the newly edited administrator
         return redirect()->route("administrators.show", ["administrator" => $administrator]);
     }
