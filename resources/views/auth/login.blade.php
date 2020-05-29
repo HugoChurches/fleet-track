@@ -8,7 +8,18 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
+
+
+
+
+
 <body>
+
+    <div class="absolute">
+        <img src=" {{ asset('fleet_track_logo.png') }}" alt="Fleet Track logo" class="w-40 pt-10 pl-10">
+    </div>
+
+
     <div class="w-full  h-screen bg-gray-800 flex flex-col items-center justify-center space-y-6">
 
         <div class="flex justify-end absolute top-0 right-0">
