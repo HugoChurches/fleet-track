@@ -31,7 +31,7 @@ class UpdateTrip extends FormRequest
             'due_date' => 'required',
             'trip_notes' => 'nullable',
             'pocket_expenses' => 'nullable|numeric|min:0',
-            'late_fee' => 'required|numeric|min:0',
+            'late_fee' => 'nullable|numeric|min:0',
             'bonus' => 'nullable|numeric|min:0',
             'pay_rate' => 'nullable|numeric|min:0',
         ];

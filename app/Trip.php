@@ -55,12 +55,13 @@ class Trip extends Model
 
     public function totalCost()
     {
+        //Calculate final payout
         $duration_hours = $this->duration_hours ? $this->duration_hours : 0;
         $pay_rate = $this->pay_rate ? $this->pay_rate : 0;
         $pocket_expenses = $this->pocket_expenses ? $this->pocket_expenses : 0;
         $bonus = $this->bonus ? $this->bonus : 0;
         $late_fee = $this->late_fee ? $this->late_fee : 0;
-
+        //And return it
         return ($duration_hours * $pay_rate) + $pocket_expenses + $bonus - $late_fee;
     }
 }

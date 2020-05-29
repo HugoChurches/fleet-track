@@ -47,6 +47,7 @@ class AdministratorController extends Controller
         $administrator->password = bcrypt($request->input('password'));
         $administrator->save();
         //After saving everything reroute to the newly added administrator
+        request()->session()->flash('success', 'New administrator added!');
         return redirect()->route("administrators.show", ["administrator" => $administrator]);
     }
 

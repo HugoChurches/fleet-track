@@ -76,6 +76,21 @@ class DriverController extends Controller
         //
     }
 
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Driver  $driver
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Driver $driver)
+    {
+        $data['driver'] = $driver;
+        return view('confirm-driver', $data);
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -84,6 +99,7 @@ class DriverController extends Controller
      */
     public function destroy(Driver $driver)
     {
-        //
+        $driver->delete($driver);
+        return redirect()->route("drivers.index", ["driver" => $driver]);
     }
 }

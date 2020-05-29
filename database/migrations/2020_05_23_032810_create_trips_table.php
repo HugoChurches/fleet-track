@@ -15,6 +15,7 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
+            //Constrained / Must exist in database
             $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('driver_id')->constrained();
             $table->foreignId('vehicle_id')->constrained();

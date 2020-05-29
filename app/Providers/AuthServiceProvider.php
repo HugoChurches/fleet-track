@@ -19,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register any authentication / authorization services.
-     *
+     * This will show&hide elements away from drivers and admins
      * @return void
      */
     public function boot()

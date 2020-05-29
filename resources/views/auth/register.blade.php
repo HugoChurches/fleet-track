@@ -13,8 +13,8 @@
     <div class="w-full flex flex-col items-center justify-center space-y-6">
 
         <div class="flex justify-end absolute top-0 right-0">
-            <a class="font-semibold text-white m-2" href="about.html">About us</a>
-            <a class="font-semibold text-white m-2" href="contact.html">Contact</a>
+            <a class="font-semibold text-white m-2" href="{{ route('about.about') }}">About us</a>
+            <a class="font-semibold text-white m-2" href="{{ route('contact.contact') }}">Contact</a>
         </div>
 
         <div class="flex flex-col items-center pt-32">

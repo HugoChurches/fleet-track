@@ -56,15 +56,6 @@
             <button href="{{route('maintenances.destroy', ['maintenance' => $maintenance])}}" class="bg-red-200 text-red-800 rounded px-4 py-2">Confirm</button>
         </div>
 
-
-
-
-
-
-
-
-
-
     </div>
 </form>
 

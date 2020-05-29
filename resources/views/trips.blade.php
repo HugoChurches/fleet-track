@@ -31,8 +31,13 @@
             <td class="px-4 py-2">{{$trip->totalCost()}}</td>
             <td class="px-4 py-2">
                 <a href="{{route('trips.show', ['trip' => $trip])}}" class="bg-gray-200 text-cool-gray-700 rounded px-2">View</a>
+                @can('admin-access')
                 <a href="{{route('trips.edit', ['trip' => $trip])}}" class="bg-blue-200 text-blue-800 rounded px-2">Edit</a>
-                @if($trip->driver->user->driver_id == null)
+                @endcan
+                <a href="{{route('trips.showNotes', ['trip' => $trip])}}" class="bg-blue-200 text-blue-800 rounded px-2">Add notes</a>
+
+
+                @can('admin-access')
                 @if($trip->status() == 'Pending authorization')
                 <form action="{{route('trips.authorize', ['trip' => $trip])}}" method="POST">
                     @csrf
@@ -48,7 +53,7 @@
                     <button class="bg-red-200 text-red-800 rounded px-2">Deny</button>
                 </form>
                 @endif
-                @endif
+                @endcan
 
 
                 @if($trip->status() == 'Scheduled')

@@ -73,7 +73,6 @@ class TripController extends Controller
     {
         $data['trip'] = $trip;
         $data2['vehicles'] = Vehicle::all();
-
         return view('update-trip', $data, $data2);
     }
 
@@ -141,5 +140,33 @@ class TripController extends Controller
     {
         $trip->delete();
         return redirect()->route('trips.index');
+    }
+
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Trip  $trip
+     * @return \Illuminate\Http\Response
+     */
+    public function showNotes(Trip $trip)
+    {
+        $data['trip'] = $trip;
+        return view('update-note', $data);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Trip  $trip
+     * @return \Illuminate\Http\Response
+     */
+    public function addNotes(UpdateTrip $request, Trip $trip)
+    {
+        $trip->update($request->only('duration_hours', 'destination', 'due_date', 'trip_notes', 'pocket_expenses', 'late_fee', 'bonus', 'pay_rate'));
+        return redirect()->route("trips.show", ["trip" => $trip]);
     }
 }

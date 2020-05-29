@@ -30,9 +30,24 @@ class Vehicle extends Model
     {
         $unfinishedMaintenance = $this->maintenances()->whereNull('started_on')->first();
 
+        $ongoingMaintenance_start = $this->maintenances()->whereNotNull('started_on')->first();
+
+        $ongoingMaintenance_end = $this->maintenances()->whereNull('ended_on')->first();
+
+
+
+
+        //Fixing issue where a vehicle would show available while undergoing service in vehicle blade
         if ($unfinishedMaintenance) {
             return 'Out of service';
         }
+
+        if ($ongoingMaintenance_start && $ongoingMaintenance_end) {
+            return 'Out of service';
+        }
+
+
+
 
         //Started must not be nullable if vehicle is in use
 

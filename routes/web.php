@@ -32,6 +32,8 @@ Route::post('/trips/{trip}/start', 'TripController@start')->name('trips.start');
 Route::post('/trips/{trip}/end', 'TripController@end')->name('trips.end');
 Route::delete('/trips/{trip}', 'TripController@destroy')->name('trips.destroy');
 Route::post('/trips/{trip}/authorize', 'TripController@authorizeTrip')->name('trips.authorize');
+Route::get('/trips/{trip}/edit_note', 'TripController@showNotes')->name('trips.showNotes');
+Route::patch('/trips/{trip}/note', 'TripController@addNotes')->name('trips.addNotes');
 
 
 //Routes for maintenance
@@ -47,6 +49,7 @@ Route::delete('/maintenances/delete/{maintenance}', 'MaintenanceController@destr
 //Routes for drivers
 Route::get('/drivers', 'DriverController@index')->name('drivers.index');
 Route::get('/drivers/{driver}', 'DriverController@show')->name('drivers.show');
+
 
 //Routes for administrators
 Route::get('/administrators', 'AdministratorController@index')->name('administrators.index');

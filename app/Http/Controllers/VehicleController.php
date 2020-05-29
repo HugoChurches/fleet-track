@@ -39,7 +39,7 @@ class VehicleController extends Controller
     public function store(StoreVehicle $request)
     {
         $vehicle = Vehicle::create($request->only('make', 'model', 'color', 'engine_number', 'location', 'year', 'mileage', 'next_service'));
-
+        request()->session()->flash('success', 'New vehicle added!');
         return redirect()->route("vehicles.show", ["vehicle" => $vehicle]);
     }
 

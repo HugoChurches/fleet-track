@@ -41,6 +41,7 @@ class MaintenanceController extends Controller
     {
         $maintenance = Maintenance::create($request->only('vehicle_id', 'notes'));
         $data['maintenances'] = Maintenance::all();
+        request()->session()->flash('success', 'New maintenance created!');
         return redirect()->route('maintenances.index', $data);
     }
 

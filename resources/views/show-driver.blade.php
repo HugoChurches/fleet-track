@@ -15,13 +15,13 @@
 
     <div class="flex flex-col font-semibold">
         <label class="w-full text-gray-700">Name</label>
-        <input disabled class="w-full rounded border px-2" id="name" type="text" value="{{ $driver->user->name }}">
+        <input disabled class="w-full rounded border px-2" id="name" type="text" value="{{ $driver->user['name'] }}">
     </div>
 
 
     <div class="flex flex-col font-semibold">
         <label class="w-full text-gray-700">E-mail</label>
-        <input disabled class="w-full rounded border px-2" id="email" type="text" value="{{ $driver->user->email }}">
+        <input disabled class="w-full rounded border px-2" id="email" type="text" value="{{ $driver->user['email'] }}">
     </div>
 
     <div class="flex flex-col font-semibold">
@@ -71,7 +71,7 @@
         <tbody>
             @foreach($driver->trips as $trip)
             <tr class="border-t border-b">
-                <td class="px-4 py-2">{{$trip->driver->user->name}}</td>
+                <td class="px-4 py-2">{{$trip->driver->user['name']}}</td>
                 <td class="px-4 py-2">{{$trip->vehicle->make}}</td>
                 <td class="px-4 py-2">{{$trip->destination}}</td>
                 <td class="px-4 py-2">{{$trip->due_date}}</td>
