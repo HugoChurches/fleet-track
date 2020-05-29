@@ -132,6 +132,7 @@ class MaintenanceController extends Controller
     {
         //
         $maintenance->delete($maintenance);
+        request()->session()->flash('success', 'Maintenance removed!');
         return redirect()->route("maintenances.index", ["maintenance" => $maintenance]);
     }
 }

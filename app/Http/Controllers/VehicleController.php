@@ -103,6 +103,7 @@ class VehicleController extends Controller
     public function destroy(Vehicle $vehicle)
     {
         $vehicle->delete($vehicle);
+        request()->session()->flash('success', 'Vehicle removed!');
         return redirect()->route("vehicles.index", ["vehicle" => $vehicle]);
     }
 }
