@@ -32,8 +32,6 @@
         <input disabled class="w-full rounded border px-2" id="make" type="text" value="{{ $maintenance->status() }}">
     </div>
 
-
-
     @if($maintenance->started_on != null)
     <div class="flex flex-col font-semibold">
         <label class="w-full text-gray-700">Started</label>
@@ -47,9 +45,6 @@
         <input disabled class="w-full rounded border px-2" id="make" type="text" value="{{ $maintenance->ended_on->diffForHumans()  }}">
     </div>
     @endif
-
-
-
 
     <div class="flex justify-end space-x-4 pt-2">
         <a href="{{route('maintenances.index')}}" class="bg-gray-300 text-gray-700 rounded px-4 py-2">Back</a>

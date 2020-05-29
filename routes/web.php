@@ -51,6 +51,15 @@ Route::get('/drivers', 'DriverController@index')->name('drivers.index');
 Route::get('/drivers/{driver}', 'DriverController@show')->name('drivers.show');
 
 
+
+Route::get('/drivers/delete/{driver}', 'DriverController@delete')->name('drivers.delete');
+Route::delete('/drivers/delete/{driver}', 'DriverController@destroy')->name('drivers.destroy');
+
+
+
+
+
+
 //Routes for administrators
 Route::get('/administrators', 'AdministratorController@index')->name('administrators.index');
 Route::get('/administrators/create', 'AdministratorController@create')->name('administrators.create');

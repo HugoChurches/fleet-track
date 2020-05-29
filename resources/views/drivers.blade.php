@@ -20,6 +20,7 @@
             <td class="px-4 py-2">{{$driver->user['email']}}</td>
             <td class="px-4 py-2">
                 <a href="{{route('drivers.show', ['driver' => $driver])}}" class="bg-gray-200 text-cool-gray-700 rounded px-2">View</a>
+                <!-- <a href="{{route('drivers.delete', ['driver' => $driver])}}" class="bg-red-200 text-red-800 rounded px-2">Remove</a> -->
             </td>
         </tr>
         @endif

@@ -28,7 +28,7 @@
             <td class="px-4 py-2">{{$trip->due_date}}</td>
             <td class="px-4 py-2">Hours {{$trip->duration_hours}}</td>
             <td class="px-4 py-2">{{$trip->status()}}</td>
-            <td class="px-4 py-2">{{$trip->totalCost()}}</td>
+            <td class="px-4 py-2">${{$trip->totalCost()}}</td>
             <td class="px-4 py-2">
                 <a href="{{route('trips.show', ['trip' => $trip])}}" class="bg-gray-200 text-cool-gray-700 rounded px-2">View</a>
                 @can('admin-access')

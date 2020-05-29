@@ -15,8 +15,10 @@
 
             <br>
             <p>
-                This application is focused on administrating vehicles' conditions in a fleet along with
-                maintainence scheduling & tracking drivers hours as well as dispatching vehicles for deliveries.
+                This project is imagined in the use of tracking tools for fleet vehicles, these
+                tools will cover a landing page where managers and drivers can login
+                and decide on which vehicles will be leased to which driver and also log
+                hours of travel time
             </p>
 
         </div>
