@@ -20,7 +20,7 @@ If you happen to stumble upon this Github and you're interested in trying it out
 
 
 
-###### Here are the Endpoints/Routes for Laravel for this particular project
+## Here are the Endpoints/Routes for Laravel for this particular project
 //Routes for home blades
 - Route::get('/', 'HomeController@index');
 - Route::get('/home', 'HomeController@index')->name('home');
