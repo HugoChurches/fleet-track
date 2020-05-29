@@ -17,7 +17,7 @@
     </thead>
     <tbody>
         @foreach($admins as $admin)
-
+        @if($admin['driver_id'] == null)
         <tr class="border-t border-b">
             <td class="px-4 py-2">{{$admin->name}}</td>
             <td class="px-4 py-2">{{$admin->email}}</td>
@@ -26,6 +26,7 @@
                 <a href="{{route('administrators.edit', ['administrator' => $admin])}}" class="bg-blue-200 text-blue-800 rounded px-2">Edit</a>
             </td>
         </tr>
+        @endif
         @endforeach
 
     </tbody>
